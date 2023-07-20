@@ -18,7 +18,7 @@ export default function MyInput({
   onChangeText,
   value,
   borderWidth = 0,
-  textColor = colors.primary,
+  textColor = colors.white,
   keyboardType,
   secureTextEntry,
   styleInput,
@@ -27,7 +27,7 @@ export default function MyInput({
   multiline,
   label2,
   styleLabel,
-  colorIcon = colors.primary,
+  colorIcon = colors.white,
 }) {
 
   const [tutup, setTutup] = useState(true);
@@ -62,7 +62,7 @@ export default function MyInput({
       }}>
         <TextInput
           editable={editable}
-          placeholderTextColor={colors.placeholder}
+          placeholderTextColor={colors.white}
           maxLength={maxLength}
           multiline={multiline}
           autoFocus={autoFocus}
@@ -80,7 +80,7 @@ export default function MyInput({
             borderRadius: 10,
             borderWidth: borderWidth,
             paddingLeft: 10,
-            color: colors.black,
+            color: textColor,
             fontSize: 12,
             fontFamily: fonts.primary[400],
             ...styleInput,
@@ -102,7 +102,7 @@ export default function MyInput({
             alignItems: 'center',
             height: '100%'
           }}>
-            <Icon type="ionicon" name={!tutup ? 'eye-off' : 'eye'} color={colors.placeholder} size={18} />
+            <Icon type="ionicon" name={!tutup ? 'eye-off' : 'eye'} color={colors.white} size={18} />
           </TouchableOpacity>}
       </View>
 

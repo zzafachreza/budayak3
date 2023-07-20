@@ -52,7 +52,7 @@ export default function InfoPdf({ navigation, route }) {
                 trustAllCerts={false}
                 // source={{ uri: webURL + data.foto_pdf, cache: true }}
                 source={{
-                    uri: route.params.pdf, cache: true
+                    uri: route.params.file, cache: true
                 }}
                 onLoadComplete={(numberOfPages, filePath) => {
                     console.log(`Number of pages: ${numberOfPages}`);

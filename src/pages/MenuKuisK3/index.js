@@ -29,7 +29,7 @@ export default function MenuKuisK3({ navigation, route }) {
 
     const __renderItem = ({ item }) => {
         return (
-            <TouchableOpacity onPress={() => navigation.navigate('InfoPdf', item)} style={{
+            <TouchableOpacity onPress={() => navigation.navigate('InfoSoal', item)} style={{
                 padding: 10,
                 borderRadius: 10,
                 margin: 10,

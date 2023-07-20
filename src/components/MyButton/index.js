@@ -6,13 +6,13 @@ import { colors } from '../../utils';
 
 export default function MyButton({
   title,
-  warna = colors.primary,
+  warna = colors.secondary,
   onPress,
   Icons,
   radius = 10,
-  colorText = 'white',
+  colorText = colors.primary,
   fontWeight = 'normal',
-  iconColor = 'white',
+  iconColor = colors.primary,
   borderSize = 0,
   kiri = true,
   borderColor = colors.primary,

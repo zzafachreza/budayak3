@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
     StyleSheet,
     Text,
@@ -11,7 +11,7 @@ import {
     ScrollView,
 } from 'react-native';
 import { windowWidth, fonts } from '../../utils/fonts';
-import { getData, MYAPP, storeData, urlAPI, urlApp, urlAvatar } from '../../utils/localStorage';
+import { apiURL, getData, MYAPP, storeData, urlAPI, urlApp, urlAvatar } from '../../utils/localStorage';
 import { colors } from '../../utils/colors';
 import { MyButton, MyGap } from '../../components';
 import { Icon } from 'react-native-elements';
@@ -20,7 +20,8 @@ import { useIsFocused } from '@react-navigation/native';
 import axios from 'axios';
 import LinearGradient from 'react-native-linear-gradient';
 import moment from 'moment';
-
+import ViewShot from "react-native-view-shot";
+import Share from 'react-native-share';
 export default function EReport({ navigation, route }) {
     const [user, setUser] = useState({});
     const [com, setCom] = useState({});
@@ -28,7 +29,7 @@ export default function EReport({ navigation, route }) {
     const [wa, setWA] = useState('');
     const [open, setOpen] = useState(false);
 
-
+    const ref = useRef();
 
     useEffect(() => {
 
@@ -36,8 +37,14 @@ export default function EReport({ navigation, route }) {
         if (isFocused) {
             getData('user').then(res => {
 
-                setOpen(true);
-                setUser(res);
+                axios.post(apiURL + 'update_info', {
+                    id: res.id
+                }).then(uu => {
+                    setOpen(true);
+                    setUser(uu.data);
+                })
+
+
 
             });
         }
@@ -155,65 +162,78 @@ export default function EReport({ navigation, route }) {
                             }}>E - REPORT</Text>
 
                         </View>
-
-                        <View style={{
-                            backgroundColor: colors.white,
-                            margin: 10,
-                            flexDirection: 'row'
-                        }}>
+                        <ViewShot ref={ref} options={{ fileName: "Ereport", format: "jpg", quality: 0.9 }}>
                             <View style={{
-                                flex: 1
+                                backgroundColor: colors.white,
+                                margin: 10,
+                                flexDirection: 'row'
                             }}>
-                                <Text style={{
-                                    padding: 10,
-                                    backgroundColor: colors.primary,
-                                    color: colors.white,
-                                    fontFamily: fonts.secondary[800]
-                                }}>IDENTITAS PESERTA</Text>
-                                <View style={{ padding: 10, }}>
+                                <View style={{
+                                    flex: 1
+                                }}>
+                                    <Text style={{
+                                        padding: 10,
+                                        backgroundColor: colors.primary,
+                                        color: colors.white,
+                                        fontFamily: fonts.secondary[800]
+                                    }}>IDENTITAS PESERTA</Text>
+                                    <View style={{ padding: 10, }}>
 
-                                    <MyList label="Nama Lengkap" value={user.nama_lengkap} />
-                                    <MyList label="NIK/NIS/NIM/NIDN" value={user.nik} />
+                                        <MyList label="Nama Lengkap" value={user.nama_lengkap} />
+                                        <MyList label="NIK/NIS/NIM/NIDN" value={user.nik} />
 
-                                    <MyList label="Tempat, Tanggal/Lahir" value={user.tempat_lahir + ', ' + moment(user.tanggal_lahir).format('DD MMMM YYYY')} />
-                                    <MyList label="Status/Jabata" value={user.jabatan} />
-                                    <MyList label="Instansi/Perusahaan" value={user.instansi} />
-                                    <MyList label="Nomor Whatsapp" value={user.telepon} />
+                                        <MyList label="Tempat, Tanggal/Lahir" value={user.tempat_lahir + ', ' + moment(user.tanggal_lahir).format('DD MMMM YYYY')} />
+                                        <MyList label="Status/Jabata" value={user.jabatan} />
+                                        <MyList label="Instansi/Perusahaan" value={user.instansi} />
+                                        <MyList label="Nomor Whatsapp" value={user.telepon} />
+
+
+                                    </View>
+                                </View>
+
+                                <View style={{
+                                    flex: 1,
+                                }}>
+                                    <Text style={{
+                                        padding: 10,
+                                        backgroundColor: colors.primary,
+                                        color: colors.white,
+                                        fontFamily: fonts.secondary[800]
+                                    }}>SKOR</Text>
+                                    <View style={{ padding: 10, flex: 1, justifyContent: 'space-around' }}>
+
+                                        <MyList2 label="DASAR-DASAR K3" value={user.nilai1} />
+                                        <MyList2 label="ALAT PELINDUNG DIRI" value={user.nilai2} />
+                                        <MyList2 label="RAMBU-RAMBU K3" value={user.nilai3} />
+                                        <MyList2 label="5R" value={user.nilai4} />
+                                        <MyList2 label="TOTAL NILAI" value={(parseFloat(user.nilai1) + parseFloat(user.nilai2) + parseFloat(user.nilai3) + parseFloat(user.nilai4))} />
+                                        <MyList2 label="NILAI RATA-RATA" value={(parseFloat(user.nilai1) + parseFloat(user.nilai2) + parseFloat(user.nilai3) + parseFloat(user.nilai4)) / 4} />
+
+
+
+                                    </View>
 
 
                                 </View>
                             </View>
-
-                            <View style={{
-                                flex: 1,
-                            }}>
-                                <Text style={{
-                                    padding: 10,
-                                    backgroundColor: colors.primary,
-                                    color: colors.white,
-                                    fontFamily: fonts.secondary[800]
-                                }}>SKOR</Text>
-                                <View style={{ padding: 10, flex: 1, justifyContent: 'space-around' }}>
-
-                                    <MyList2 label="DASAR-DASAR K3" value={80} />
-                                    <MyList2 label="ALAT PELINDUNG DIRI" value={80} />
-                                    <MyList2 label="RAMBU-RAMBU K3" value={80} />
-                                    <MyList2 label="5R" value={80} />
-                                    <MyList2 label="TOTAL NILAI" value={80} />
-                                    <MyList2 label="NILAI RATA-RATA" value={80} />
-
-
-
-                                </View>
-
-
-                            </View>
-                        </View>
-
+                        </ViewShot>
                         <View style={{
                             padding: 20,
                         }}>
-                            <MyButton title="Download E-REPORT" warna={colors.primary} />
+                            <MyButton onPress={() => {
+                                ref.current.capture().then(uri => {
+                                    console.log("do something with ", uri);
+                                    Share.open({
+                                        url: uri
+                                    })
+                                        .then((res) => {
+                                            console.log(res);
+                                        })
+                                        .catch((err) => {
+                                            err && console.log(err);
+                                        });
+                                });
+                            }} title="Download E-REPORT" warna={colors.secondary} />
                         </View>
 
                     </View>

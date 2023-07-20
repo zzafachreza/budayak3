@@ -16,8 +16,10 @@ export default function MyCalendar({
   styleInput,
   placeholder,
   label2,
+  iconColor = colors.white,
+  textColor = colors.white,
   styleLabel,
-  colorIcon = colors.primary,
+  colorIcon = colors.white,
   data = [],
 }) {
   return (
@@ -28,11 +30,11 @@ export default function MyCalendar({
           alignItems: 'center',
           paddingVertical: 0,
         }}>
-        <Icon type="ionicon" name={iconname} color={colors.primary} size={16} />
+        <Icon type="ionicon" name={iconname} color={iconColor} size={16} />
         <Text
           style={{
             fontFamily: fonts.secondary[600],
-            color: colors.primary,
+            color: textColor,
             left: 10,
             fontSize: 12,
             ...styleLabel,
@@ -49,6 +51,7 @@ export default function MyCalendar({
         borderColor: colors.primary,
       }}>
         <DatePicker
+
           style={{ width: '100%', height: 45, }}
           date={value}
           mode="date"
@@ -68,6 +71,7 @@ export default function MyCalendar({
               fontFamily: fonts.secondary[600],
               textAlign: 'left',
               borderWidth: 0,
+              color: colors.white
             }
             // ... You can check the source to find the other keys.
           }}

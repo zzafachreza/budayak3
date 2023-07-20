@@ -58,16 +58,23 @@ export default function Home({ navigation, route }) {
           borderRadius: 10,
           justifyContent: 'center',
           alignItems: 'center',
-          borderColor: colors.primary,
-          backgroundColor: colors.primary,
+          borderColor: colors.secondary,
+          // backgroundColor: colors.white,
           margin: 5,
           height: windowHeight / 6,
         }}>
 
+          <Image source={{
+            uri: item.image
+          }} style={{
+            width: 80,
+            height: 80,
+            resizeMode: 'contain'
+          }} />
           <Text style={{
             fontFamily: fonts.secondary[600],
-            fontSize: 20,
-            color: colors.white,
+            fontSize: 15,
+            color: colors.secondary,
             textAlign: 'center'
           }}>{item.judul}</Text>
         </View>
@@ -84,7 +91,7 @@ export default function Home({ navigation, route }) {
     }}>
       <View style={{
         padding: 20,
-        backgroundColor: colors.white,
+        backgroundColor: colors.primary,
         flexDirection: 'row'
       }}>
         <View style={{
@@ -93,12 +100,12 @@ export default function Home({ navigation, route }) {
           <Text style={{
             fontFamily: fonts.secondary[600],
             fontSize: 16,
-            color: colors.black
+            color: colors.white
           }}>Hi, {user.nama_lengkap}</Text>
           <Text style={{
             fontFamily: fonts.secondary[400],
             fontSize: 16,
-            color: colors.black
+            color: colors.white
           }}>Selamat datang di Budaya K3</Text>
         </View>
         <View>
@@ -113,7 +120,7 @@ export default function Home({ navigation, route }) {
         padding: 10,
         justifyContent: 'center',
 
-        backgroundColor: colors.white
+        backgroundColor: colors.primary
       }}>
 
 
@@ -132,17 +139,17 @@ export default function Home({ navigation, route }) {
       {/* navigation bottom */}
       <View style={{
         flexDirection: 'row',
-        backgroundColor: colors.primary,
+        backgroundColor: colors.secondary,
         justifyContent: 'space-around'
       }}>
         <TouchableOpacity style={{
           padding: 10,
         }}>
-          <Icon type='ionicon' name='home-outline' color={colors.white} size={20} />
+          <Icon type='ionicon' name='home-outline' color={colors.primary} size={20} />
           <Text style={{
             fontFamily: fonts.secondary[600],
             fontSize: 12,
-            color: colors.white
+            color: colors.primary
           }}>Beranda</Text>
 
         </TouchableOpacity>
@@ -152,11 +159,11 @@ export default function Home({ navigation, route }) {
         <TouchableOpacity onPress={() => navigation.navigate('Account')} style={{
           padding: 10,
         }}>
-          <Icon type='ionicon' name='person-outline' color={colors.white} size={20} />
+          <Icon type='ionicon' name='person-outline' color={colors.primary} size={20} />
           <Text style={{
             fontFamily: fonts.secondary[600],
             fontSize: 12,
-            color: colors.white
+            color: colors.primary
           }}>Profile</Text>
         </TouchableOpacity>
       </View>

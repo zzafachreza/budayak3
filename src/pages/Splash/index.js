@@ -34,24 +34,90 @@ export default function Splash({ navigation }) {
   return (
     <ImageBackground style={{
       flex: 1,
-      backgroundColor: colors.white,
+      backgroundColor: colors.primary,
       justifyContent: 'center',
-      alignItems: 'center'
     }}>
 
 
-      <Image source={require('../../assets/logo.png')} style={{
-        width: windowWidth,
-        height: windowWidth / 2,
-        resizeMode: 'contain'
-      }} />
+
 
       <View style={{
-        marginTop: 10,
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
+        <Image source={require('../../assets/logo.png')} style={{
+          width: windowWidth,
+          height: windowWidth / 2,
+          resizeMode: 'contain'
+        }} />
+
+        <View style={{
+          marginTop: 10,
+          padding: 10,
+        }}>
+          <ActivityIndicator color={colors.secondary} size="large" />
+        </View>
+      </View>
+      <View style={{
         padding: 10,
       }}>
-        <ActivityIndicator color={colors.secondary} size="large" />
+        <View style={{
+          flexDirection: 'row',
+          justifyContent: 'space-around',
+          backgroundColor: colors.primary
+        }}>
+          <Image
+            source={require('../../assets/piksi.png')}
+            style={
+              {
+                marginVertical: 10,
+                width: 100,
+                height: 50,
+                resizeMode: 'contain'
+              }
+            }
+          />
+          <Image
+            source={require('../../assets/asto.png')}
+            style={
+              {
+                marginVertical: 10,
+                width: 100,
+                height: 50,
+                resizeMode: 'contain'
+              }
+            }
+          />
+          <Image
+            source={require('../../assets/tutwuri.png')}
+            style={
+              {
+                marginVertical: 10,
+                width: 100,
+                height: 50,
+                resizeMode: 'contain'
+              }
+            }
+          />
+          <Image
+            source={require('../../assets/kedai.png')}
+            style={
+              {
+                marginVertical: 10,
+                width: 100,
+                height: 50,
+                resizeMode: 'contain'
+              }
+            }
+          />
+
+
+
+
+        </View>
       </View>
+
     </ImageBackground>
   );
 }

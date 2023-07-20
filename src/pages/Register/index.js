@@ -128,7 +128,7 @@ export default function Register({ navigation }) {
         <ImageBackground
             style={{
                 flex: 1,
-                backgroundColor: colors.white,
+                backgroundColor: colors.primary,
                 padding: 10,
                 position: 'relative'
             }}>
@@ -143,115 +143,120 @@ export default function Register({ navigation }) {
                     <Text style={{
                         fontSize: windowWidth / 12,
                         fontFamily: fonts.primary[800],
-                        color: colors.black,
+                        color: colors.white,
 
-                    }}>Daftar Pengguna</Text>
+                    }}>Registrasi</Text>
                 </View>
 
 
-                <MyInput
-                    placeholder="Masukan username"
-                    label="Username"
-                    iconname="at"
-                    value={data.username}
-                    onChangeText={value =>
+                <View style={{
+                    padding: 20,
+                    backgroundColor: colors.tertiary,
+                    borderRadius: 20,
+                }}>
+                    <MyInput
+                        placeholder="Masukan username"
+                        label="Username"
+                        iconname="at"
+                        value={data.username}
+                        onChangeText={value =>
+                            setData({
+                                ...data,
+                                username: value,
+                            })
+                        }
+                    />
+                    <MyGap jarak={10} />
+                    <MyInput
+                        placeholder="Masukan nama lengkap"
+                        label="Nama Lengkap"
+                        iconname="person"
+                        value={data.nama_lengkap}
+                        onChangeText={value =>
+                            setData({
+                                ...data,
+                                nama_lengkap: value,
+                            })
+                        }
+                    />
+                    <MyGap jarak={10} />
+                    <MyInput
+                        placeholder="Masukan NIK/NIS/NIM/NIDN"
+                        label="NIK/NIS/NIM/NIDN"
+                        iconname="card"
+
+                        value={data.nik}
+                        onChangeText={value =>
+                            setData({
+                                ...data,
+                                nik: value,
+                            })
+                        }
+                    />
+
+                    <MyGap jarak={10} />
+                    <MyInput
+                        placeholder="Masukan Tempat lahir"
+                        label="Tempat lahir"
+                        iconname="location"
+
+                        value={data.tempat_lahir}
+                        onChangeText={value =>
+                            setData({
+                                ...data,
+                                tempat_lahir: value,
+                            })
+                        }
+                    />
+                    <MyGap jarak={10} />
+                    <MyCalendar label="Tanggal Lahir" iconname="calendar" value={data.tanggal_lahir} onDateChange={value =>
                         setData({
                             ...data,
-                            username: value,
+                            tanggal_lahir: value,
                         })
-                    }
-                />
-                <MyGap jarak={10} />
-                <MyInput
-                    placeholder="Masukan nama lengkap"
-                    label="Nama Lengkap"
-                    iconname="person"
-                    value={data.nama_lengkap}
-                    onChangeText={value =>
-                        setData({
-                            ...data,
-                            nama_lengkap: value,
-                        })
-                    }
-                />
-                <MyGap jarak={10} />
-                <MyInput
-                    placeholder="Masukan NIK/NIS/NIM/NIDN"
-                    label="NIK/NIS/NIM/NIDN"
-                    iconname="card"
+                    } />
+                    <MyGap jarak={10} />
+                    <MyInput
+                        placeholder="Masukan Status/Jabatan"
+                        label="Status/Jabatan"
+                        iconname="ribbon"
 
-                    value={data.nik}
-                    onChangeText={value =>
-                        setData({
-                            ...data,
-                            nik: value,
-                        })
-                    }
-                />
+                        value={data.jabatan}
+                        onChangeText={value =>
+                            setData({
+                                ...data,
+                                jabatan: value,
+                            })
+                        }
+                    />
+                    <MyGap jarak={10} />
+                    <MyInput
+                        placeholder="Masukan Instansi/Perusahaan"
+                        label="Instansi/Perusahaan"
+                        iconname="home"
 
-                <MyGap jarak={10} />
-                <MyInput
-                    placeholder="Masukan Tempat lahir"
-                    label="Tempat lahir"
-                    iconname="location"
-
-                    value={data.tempat_lahir}
-                    onChangeText={value =>
-                        setData({
-                            ...data,
-                            tempat_lahir: value,
-                        })
-                    }
-                />
-                <MyGap jarak={10} />
-                <MyCalendar label="Tanggal Lahir" iconname="calendar" value={data.tanggal_lahir} onDateChange={value =>
-                    setData({
-                        ...data,
-                        tanggal_lahir: value,
-                    })
-                } />
-                <MyGap jarak={10} />
-                <MyInput
-                    placeholder="Masukan Status/Jabatan"
-                    label="Status/Jabatan"
-                    iconname="ribbon"
-
-                    value={data.jabatan}
-                    onChangeText={value =>
-                        setData({
-                            ...data,
-                            jabatan: value,
-                        })
-                    }
-                />
-                <MyGap jarak={10} />
-                <MyInput
-                    placeholder="Masukan Instansi/Perusahaan"
-                    label="Instansi/Perusahaan"
-                    iconname="home"
-
-                    value={data.instansi}
-                    onChangeText={value =>
-                        setData({
-                            ...data,
-                            instansi: value,
-                        })
-                    }
-                />
-                <MyGap jarak={10} />
-                <MyInput
-                    placeholder="Masukan Nomor Whatsapp "
-                    label="Nomor Whatsapp"
-                    iconname="logo-whatsapp"
-                    keyboardType="phone-pad"
-                    value={data.telepon}
-                    onChangeText={value =>
-                        setData({
-                            ...data,
-                            telepon: value,
-                        })
-                    }
-                />
+                        value={data.instansi}
+                        onChangeText={value =>
+                            setData({
+                                ...data,
+                                instansi: value,
+                            })
+                        }
+                    />
+                    <MyGap jarak={10} />
+                    <MyInput
+                        placeholder="Masukan Nomor Whatsapp "
+                        label="Nomor Whatsapp"
+                        iconname="logo-whatsapp"
+                        keyboardType="phone-pad"
+                        value={data.telepon}
+                        onChangeText={value =>
+                            setData({
+                                ...data,
+                                telepon: value,
+                            })
+                        }
+                    />
 
 
 
@@ -261,45 +266,46 @@ export default function Register({ navigation }) {
 
 
 
-                <MyGap jarak={10} />
-                <MyInput
-                    placeholder="Masukan buat sandi"
-                    label="Buat Sandi"
-                    iconname="lock-closed"
-                    secureTextEntry
-                    value={data.password}
-                    onChangeText={value =>
-                        setData({
-                            ...data,
-                            password: value,
-                        })
-                    }
-                />
-                <MyGap jarak={10} />
-                <MyInput
-                    borderColor={sama ? colors.border : colors.danger}
-                    borderWidth={sama ? 0 : 1}
-                    placeholder="Masukan ulang kata sandi"
-                    label="Tulis Ulang Kata Sandi"
-                    iconname="lock-closed"
-                    secureTextEntry
-                    value={data.repassword}
-                    onChangeText={value => {
+                    <MyGap jarak={10} />
+                    <MyInput
+                        placeholder="Masukan buat sandi"
+                        label="Buat Sandi"
+                        iconname="lock-closed"
+                        secureTextEntry
+                        value={data.password}
+                        onChangeText={value =>
+                            setData({
+                                ...data,
+                                password: value,
+                            })
+                        }
+                    />
+                    <MyGap jarak={10} />
+                    <MyInput
+                        borderColor={sama ? colors.border : colors.danger}
+                        borderWidth={sama ? 0 : 1}
+                        placeholder="Masukan ulang kata sandi"
+                        label="Tulis Ulang Kata Sandi"
+                        iconname="lock-closed"
+                        secureTextEntry
+                        value={data.repassword}
+                        onChangeText={value => {
 
-                        if (value !== data.password) {
-                            setSama(false)
-                        } else {
-                            setSama(true)
+                            if (value !== data.password) {
+                                setSama(false)
+                            } else {
+                                setSama(true)
+                            }
+
+                            setData({
+                                ...data,
+                                repassword: value,
+                            })
                         }
 
-                        setData({
-                            ...data,
-                            repassword: value,
-                        })
-                    }
-
-                    }
-                />
+                        }
+                    />
+                </View>
                 <MyGap jarak={20} />
 
 
@@ -309,8 +315,8 @@ export default function Register({ navigation }) {
                     <>
                         <MyButton
 
-                            warna={colors.primary}
-                            title="Buat Akun"
+
+                            title="Register"
                             Icons="log-in"
                             onPress={simpan}
                         />

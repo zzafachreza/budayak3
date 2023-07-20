@@ -29,7 +29,13 @@ export default function MebuRuangK3({ navigation, route }) {
 
     const __renderItem = ({ item }) => {
         return (
-            <TouchableOpacity onPress={() => navigation.navigate('InfoPdf', item)} style={{
+            <TouchableOpacity onPress={() => {
+                if (item.nama_materi == 'PRETEST') {
+                    navigation.navigate('InfoSoal', item)
+                } else {
+                    navigation.navigate('InfoPdf', item)
+                }
+            }} style={{
                 padding: 10,
                 borderRadius: 10,
                 margin: 10,

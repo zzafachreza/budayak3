@@ -73,20 +73,53 @@ export default function Login({ navigation }) {
 
   return (
     <>
-      <ScrollView style={{ flex: 1, backgroundColor: colors.white, position: 'relative' }}>
+      <ScrollView style={{ flex: 1, backgroundColor: colors.primary, position: 'relative' }}>
 
         <View style={{
           flexDirection: 'row',
           justifyContent: 'space-around',
-          backgroundColor: colors.white
+          backgroundColor: colors.primary
         }}>
           <Image
-            source={require('../../assets/logo.png')}
+            source={require('../../assets/piksi.png')}
             style={
               {
                 marginVertical: 10,
-                width: windowWidth / 2,
-                height: windowWidth / 2,
+                width: 100,
+                height: 50,
+                resizeMode: 'contain'
+              }
+            }
+          />
+          <Image
+            source={require('../../assets/asto.png')}
+            style={
+              {
+                marginVertical: 10,
+                width: 100,
+                height: 50,
+                resizeMode: 'contain'
+              }
+            }
+          />
+          <Image
+            source={require('../../assets/tutwuri.png')}
+            style={
+              {
+                marginVertical: 10,
+                width: 100,
+                height: 50,
+                resizeMode: 'contain'
+              }
+            }
+          />
+          <Image
+            source={require('../../assets/kedai.png')}
+            style={
+              {
+                marginVertical: 10,
+                width: 100,
+                height: 50,
                 resizeMode: 'contain'
               }
             }
@@ -97,16 +130,36 @@ export default function Login({ navigation }) {
 
         </View>
 
+        <View style={{
+          padding: 20,
+        }}>
+          <Text style={{
+            fontFamily: fonts.secondary[800],
+            color: colors.white,
+            fontSize: 25,
+          }}>Mari Belajar Bersama kami</Text>
+          <Text style={{
+            fontFamily: fonts.secondary[600],
+            color: colors.white,
+            fontSize: 15,
+          }}>Keselamatan dan Kesehatan Kerja (K3) merupakan hal yang penting dalam suatu pengerjaan proyek. Yuk pelajari dan pahami bersama kami . . .</Text>
 
 
-        <View style={{ padding: 20, flex: 1, backgroundColor: colors.white }}>
-          <MyInput textColor={colors.primary} colorIcon={colors.primary} label="Username" onChangeText={val => setKirim({
+
+        </View>
+
+
+        <View style={{
+          padding: 20, flex: 1, backgroundColor: colors.tertiary, margin: 20,
+          borderRadius: 10,
+        }}>
+          <MyInput label="Username" onChangeText={val => setKirim({
             ...kirim,
             username: val
           })}
             iconname="at" placeholder="Masukan username" />
           <MyGap jarak={20} />
-          <MyInput textColor={colors.primary} colorIcon={colors.primary}
+          <MyInput
             onChangeText={val => setKirim({
               ...kirim,
               password: val
@@ -120,14 +173,59 @@ export default function Login({ navigation }) {
           {!loading &&
 
 
-            <MyButton
-              onPress={masuk}
-              title="Log in"
-              warna={colors.primary}
-              Icons="log-in-outline"
-            />
+            <View style={{
+              flexDirection: 'row'
+            }}>
+              <View style={{
+                flex: 1,
+                paddingRight: 5
+              }}>
+                <MyButton
+                  onPress={masuk}
+                  title="Log in"
+
+
+                  Icons="log-in-outline"
+                />
+              </View>
+              <View style={{
+                flex: 1,
+                paddingLeft: 5,
+              }}>
+                <MyButton
+                  onPress={() => navigation.navigate('Register')}
+                  title="Register"
+                  warna={colors.primary}
+                  iconColor={colors.white}
+                  colorText={colors.white}
+
+                  Icons="create-outline"
+                />
+              </View>
+            </View>
 
           }
+
+        </View>
+
+        <View style={{
+          padding: 20,
+        }}>
+          <View style={{
+            borderBottomWidth: 1,
+            borderBottomColor: colors.white,
+            marginVertical: 20,
+            width: '30%'
+          }} />
+          <Text style={{
+            fontFamily: fonts.secondary[600],
+            color: colors.white,
+            fontSize: 15,
+          }}>Aplikasi ini merupakan program kerjasama antara Politeknik Piksi Ganesha Indonsia dan CV. Astoetik dalam program <Text style={{
+            fontFamily: fonts.secondary[800],
+            color: colors.secondary,
+            fontStyle: 'italic'
+          }}>Matching Found</Text></Text>
 
         </View>
         {loading && <View style={{
@@ -139,21 +237,7 @@ export default function Login({ navigation }) {
         </View>}
       </ScrollView>
 
-      <TouchableOpacity activeOpacity={1} onPress={() => {
 
-        navigation.navigate('Register')
-      }} style={{
-        padding: 10,
-        backgroundColor: colors.white,
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}><Text style={{
-        fontSize: windowWidth / 28,
-        marginTop: 10,
-        fontFamily: fonts.primary[400],
-        textAlign: 'center',
-        color: colors.primary
-      }}>TIdak punya akun ? daftar disini</Text></TouchableOpacity>
     </>
   );
 }

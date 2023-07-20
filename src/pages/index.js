@@ -18,6 +18,8 @@ import MenuKyt from './MenuKyt';
 import MenuKuisK3 from './MenuKuisK3';
 import MenuEReport from './MenuEReport';
 import MenuRambuK3 from './RambuK3';
+import InfoYT from './InfoYT';
+import InfoSoal from './InfoSoal';
 
 
 
@@ -41,5 +43,7 @@ export {
   MenuKyt,
   MenuKuisK3,
   MenuEReport,
+  InfoYT,
+  InfoSoal
 
 };

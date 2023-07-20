@@ -21,6 +21,8 @@ import {
   MenuKyt,
   MenuKuisK3,
   MenuEReport,
+  InfoYT,
+  InfoSoal,
 
 
 
@@ -147,6 +149,25 @@ export default function Router() {
       <Stack.Screen
         name="InfoPdf"
         component={InfoPdf}
+        options={{
+          headerShown: false,
+
+        }}
+      />
+
+
+      <Stack.Screen
+        name="InfoYT"
+        component={InfoYT}
+        options={{
+          headerShown: false,
+
+        }}
+      />
+
+      <Stack.Screen
+        name="InfoSoal"
+        component={InfoSoal}
         options={{
           headerShown: false,
 
