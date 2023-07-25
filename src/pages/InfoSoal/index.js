@@ -119,26 +119,26 @@ export default function InfoSoal({ navigation, route }) {
                     }}>{route.params.nama_materi}</Text>
                 </View>
                 {open &&
-                    <>
+                    <ScrollView showsVerticalScrollIndicator={false}>
                         <View style={{
-                            flex: 2,
+                            flex: 1,
                             borderRadius: 10,
-                            backgroundColor: colors.tertiary,
+                            backgroundColor: colors.white,
                             padding: 10,
                         }}>
                             {/* SOAL */}
-                            <Text style={{ fontFamily: fonts.secondary[600], fontSize: 14, left: 5, color: colors.white }}>JUMLAH SOAL ADA {data.length}</Text>
+                            <Text style={{ fontFamily: fonts.secondary[600], fontSize: 14, left: 5, color: colors.primary }}>JUMLAH SOAL ADA {data.length}</Text>
                             <View style={{
                                 flexDirection: 'row',
                                 borderBottomWidth: 1,
                                 borderBottomColor: colors.secondary
                             }}>
 
-                                <Text style={{ flex: 1, fontFamily: fonts.secondary[600], fontSize: 15, color: colors.white }}> SOAL NOMOR <Text style={{ backgroundColor: colors.primary, color: colors.white, }}>  {nomor + 1}  </Text></Text>
+                                <Text style={{ flex: 1, fontFamily: fonts.secondary[600], fontSize: 15, color: colors.primary }}> SOAL NOMOR <Text style={{ backgroundColor: colors.primary, color: colors.white, }}>  {nomor + 1}  </Text></Text>
 
                                 <View>
                                     <View style={{}}>
-                                        <Text style={{ flex: 1, fontFamily: fonts.secondary[600], color: colors.white }}>Sisa Waktu : </Text>
+                                        <Text style={{ flex: 1, fontFamily: fonts.secondary[600], color: colors.primary }}>Sisa Waktu : </Text>
                                         <CountDown
                                             until={30 * 60}
                                             size={15}
@@ -156,12 +156,13 @@ export default function InfoSoal({ navigation, route }) {
                                 padding: 20,
                             }}>
 
+                                <RenderHtml
 
-                                <Text style={{
-                                    fontFamily: fonts.secondary[600],
-                                    fontSize: 14,
-                                    color: colors.white,
-                                }}>{data[nomor].soal}</Text>
+                                    source={{
+                                        html: data[nomor].soal
+                                    }}
+                                />
+
 
                                 <TouchableOpacity
 
@@ -203,16 +204,19 @@ export default function InfoSoal({ navigation, route }) {
 
                                     style={{ flexDirection: 'row', marginVertical: 5, position: 'relative', paddingLeft: 5 }}>
 
-                                    <Text style={{ fontFamily: fonts.secondary[600], fontSize: 14, color: colors.white }}>A. </Text>
+                                    <Text style={{ fontFamily: fonts.secondary[600], fontSize: 14, color: colors.black }}>A. </Text>
                                     {pilih[nomor].a &&
 
                                         <View style={{ position: 'absolute', left: -3, top: -5 }}><Icon type='ionicon' color={colors.secondary} name='checkmark-outline' /></View>}
 
-                                    <Text style={{
-                                        fontFamily: fonts.secondary[600],
-                                        fontSize: 12,
-                                        color: colors.white
-                                    }}>{data[nomor].a}</Text>
+
+
+                                    <RenderHtml
+                                        contentWidth={'100%'}
+                                        source={{
+                                            html: data[nomor].a
+                                        }}
+                                    />
 
 
                                 </TouchableOpacity>
@@ -253,13 +257,15 @@ export default function InfoSoal({ navigation, route }) {
 
                                     style={{ flexDirection: 'row', marginVertical: 5, position: 'relative', paddingLeft: 5 }}>
 
-                                    <Text style={{ fontFamily: fonts.secondary[600], color: colors.white, fontSize: 14 }}>B. </Text>
+                                    <Text style={{ fontFamily: fonts.secondary[600], color: colors.black, fontSize: 14 }}>B. </Text>
                                     {pilih[nomor].b && <View style={{ position: 'absolute', left: -3, top: -5 }}><Icon type='ionicon' color={colors.secondary} name='checkmark-outline' /></View>}
-                                    <Text style={{
-                                        fontFamily: fonts.secondary[600],
-                                        fontSize: 12,
-                                        color: colors.white
-                                    }}>{data[nomor].b}</Text>
+                                    <RenderHtml
+                                        contentWidth={'100%'}
+                                        source={{
+                                            html: data[nomor].b
+                                        }}
+                                    />
+
                                 </TouchableOpacity>
 
                                 <TouchableOpacity
@@ -297,13 +303,15 @@ export default function InfoSoal({ navigation, route }) {
 
                                     style={{ flexDirection: 'row', marginVertical: 5, position: 'relative', paddingLeft: 5 }}>
 
-                                    <Text style={{ fontFamily: fonts.secondary[600], color: colors.white, fontSize: 14 }}>C. </Text>
+                                    <Text style={{ fontFamily: fonts.secondary[600], color: colors.black, fontSize: 14 }}>C. </Text>
                                     {pilih[nomor].c && <View style={{ position: 'absolute', left: -3, top: -5 }}><Icon type='ionicon' color={colors.secondary} name='checkmark-outline' /></View>}
-                                    <Text style={{
-                                        fontFamily: fonts.secondary[600],
-                                        fontSize: 12,
-                                        color: colors.white,
-                                    }}>{data[nomor].c}</Text>
+                                    <RenderHtml
+                                        contentWidth={'100%'}
+                                        source={{
+                                            html: data[nomor].c
+                                        }}
+                                    />
+
                                 </TouchableOpacity>
 
                                 <TouchableOpacity
@@ -341,13 +349,15 @@ export default function InfoSoal({ navigation, route }) {
 
                                     style={{ flexDirection: 'row', marginVertical: 5, position: 'relative', paddingLeft: 5 }}>
 
-                                    <Text style={{ fontFamily: fonts.secondary[600], color: colors.white, fontSize: 14 }}>D. </Text>
+                                    <Text style={{ fontFamily: fonts.secondary[600], color: colors.black, fontSize: 14 }}>D. </Text>
                                     {pilih[nomor].d && <View style={{ position: 'absolute', left: -3, top: -5 }}><Icon type='ionicon' color={colors.secondary} name='checkmark-outline' /></View>}
-                                    <Text style={{
-                                        fontFamily: fonts.secondary[600],
-                                        fontSize: 12,
-                                        color: colors.white,
-                                    }}>{data[nomor].d}</Text>
+                                    <RenderHtml
+                                        contentWidth={'100%'}
+                                        source={{
+                                            html: data[nomor].d
+                                        }}
+                                    />
+
                                 </TouchableOpacity>
 
 
@@ -386,13 +396,15 @@ export default function InfoSoal({ navigation, route }) {
 
                                     style={{ flexDirection: 'row', marginVertical: 5, position: 'relative', paddingLeft: 5 }}>
 
-                                    <Text style={{ fontFamily: fonts.secondary[600], color: colors.white, fontSize: 14 }}>E. </Text>
+                                    <Text style={{ fontFamily: fonts.secondary[600], color: colors.black, fontSize: 14 }}>E. </Text>
                                     {pilih[nomor].e && <View style={{ position: 'absolute', left: -3, top: -5 }}><Icon type='ionicon' color={colors.secondary} name='checkmark-outline' /></View>}
-                                    <Text style={{
-                                        fontFamily: fonts.secondary[600],
-                                        fontSize: 12,
-                                        color: colors.white,
-                                    }}>{data[nomor].e}</Text>
+                                    <RenderHtml
+                                        contentWidth={'100%'}
+                                        source={{
+                                            html: data[nomor].e
+                                        }}
+                                    />
+
                                 </TouchableOpacity>
 
                             </View>
@@ -400,7 +412,6 @@ export default function InfoSoal({ navigation, route }) {
                         </View>
 
                         <View style={{
-                            flex: 1,
                             marginTop: 10,
                             borderRadius: 10,
                             backgroundColor: colors.tertiary,
@@ -502,8 +513,7 @@ export default function InfoSoal({ navigation, route }) {
                                 }}>Soal akan tertutup secara otomatis jika waktunya telah habis.</Text>
                             </View>
                         </View>
-
-                    </>
+                    </ScrollView>
                 }
             </View>
 

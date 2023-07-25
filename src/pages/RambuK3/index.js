@@ -29,7 +29,13 @@ export default function MenuRambuK3({ navigation, route }) {
 
     const __renderItem = ({ item }) => {
         return (
-            <TouchableOpacity onPress={() => navigation.navigate('InfoPdf', item)} style={{
+            <TouchableOpacity onPress={() => {
+                if (item.tipe == 'VIDEO') {
+                    navigation.navigate('InfoYT', item)
+                } else {
+                    navigation.navigate('InfoPdf', item)
+                }
+            }} style={{
                 padding: 10,
                 borderRadius: 10,
                 margin: 10,

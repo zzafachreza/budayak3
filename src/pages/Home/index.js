@@ -154,6 +154,18 @@ export default function Home({ navigation, route }) {
 
         </TouchableOpacity>
 
+        <TouchableOpacity onPress={() => navigation.navigate('Ulasan')} style={{
+          padding: 10,
+        }}>
+          <Icon type='ionicon' name='options-outline' color={colors.primary} size={20} />
+          <Text style={{
+            fontFamily: fonts.secondary[600],
+            fontSize: 12,
+            color: colors.primary
+          }}>Testimoni</Text>
+
+        </TouchableOpacity>
+
 
 
         <TouchableOpacity onPress={() => navigation.navigate('Account')} style={{

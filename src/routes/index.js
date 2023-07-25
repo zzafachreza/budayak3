@@ -23,6 +23,8 @@ import {
   MenuEReport,
   InfoYT,
   InfoSoal,
+  Ulasan,
+  MenuDownload,
 
 
 
@@ -168,6 +170,25 @@ export default function Router() {
       <Stack.Screen
         name="InfoSoal"
         component={InfoSoal}
+        options={{
+          headerShown: false,
+
+        }}
+      />
+
+      <Stack.Screen
+        name="Ulasan"
+        component={Ulasan}
+        options={{
+          headerShown: false,
+
+        }}
+      />
+
+
+      <Stack.Screen
+        name="MenuDownload"
+        component={MenuDownload}
         options={{
           headerShown: false,
 
