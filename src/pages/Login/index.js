@@ -76,6 +76,7 @@ export default function Login({ navigation }) {
       <ScrollView style={{ flex: 1, backgroundColor: colors.primary, position: 'relative' }}>
 
         <View style={{
+          marginHorizontal: 15,
           flexDirection: 'row',
           justifyContent: 'space-around',
           backgroundColor: colors.primary
@@ -85,7 +86,7 @@ export default function Login({ navigation }) {
             style={
               {
                 marginVertical: 10,
-                width: 100,
+                width: 80,
                 height: 50,
                 resizeMode: 'contain'
               }
@@ -96,7 +97,7 @@ export default function Login({ navigation }) {
             style={
               {
                 marginVertical: 10,
-                width: 100,
+                width: 80,
                 height: 50,
                 resizeMode: 'contain'
               }
@@ -107,7 +108,7 @@ export default function Login({ navigation }) {
             style={
               {
                 marginVertical: 10,
-                width: 100,
+                width: 80,
                 height: 50,
                 resizeMode: 'contain'
               }
@@ -118,7 +119,7 @@ export default function Login({ navigation }) {
             style={
               {
                 marginVertical: 10,
-                width: 100,
+                width: 80,
                 height: 50,
                 resizeMode: 'contain'
               }
@@ -169,6 +170,19 @@ export default function Login({ navigation }) {
             iconname="lock-closed"
             placeholder="Masukan kata sandi"
           />
+          <TouchableOpacity onPress={() => {
+            let urlWA = 'https://wa.me/' + comp.tlp + `?text=Hallo admin saya lupa password . . .`;
+            Linking.openURL(urlWA)
+          }} style={{
+            marginTop: 10,
+          }}>
+            <Text style={{
+              textAlign: 'right',
+              fontFamily: fonts.secondary[600],
+              color: colors.white,
+              size: 12
+            }}>Lupa password ?</Text>
+          </TouchableOpacity>
           <MyGap jarak={40} />
           {!loading &&
 

@@ -60,62 +60,59 @@ export default function Splash({ navigation }) {
         </View>
       </View>
       <View style={{
-        padding: 10,
+        marginHorizontal: 15,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        backgroundColor: colors.primary
       }}>
-        <View style={{
-          flexDirection: 'row',
-          justifyContent: 'space-around',
-          backgroundColor: colors.primary
-        }}>
-          <Image
-            source={require('../../assets/piksi.png')}
-            style={
-              {
-                marginVertical: 10,
-                width: 100,
-                height: 50,
-                resizeMode: 'contain'
-              }
+        <Image
+          source={require('../../assets/piksi.png')}
+          style={
+            {
+              marginVertical: 10,
+              width: 80,
+              height: 50,
+              resizeMode: 'contain'
             }
-          />
-          <Image
-            source={require('../../assets/asto.png')}
-            style={
-              {
-                marginVertical: 10,
-                width: 100,
-                height: 50,
-                resizeMode: 'contain'
-              }
+          }
+        />
+        <Image
+          source={require('../../assets/asto.png')}
+          style={
+            {
+              marginVertical: 10,
+              width: 80,
+              height: 50,
+              resizeMode: 'contain'
             }
-          />
-          <Image
-            source={require('../../assets/tutwuri.png')}
-            style={
-              {
-                marginVertical: 10,
-                width: 100,
-                height: 50,
-                resizeMode: 'contain'
-              }
+          }
+        />
+        <Image
+          source={require('../../assets/tutwuri.png')}
+          style={
+            {
+              marginVertical: 10,
+              width: 80,
+              height: 50,
+              resizeMode: 'contain'
             }
-          />
-          <Image
-            source={require('../../assets/kedai.png')}
-            style={
-              {
-                marginVertical: 10,
-                width: 100,
-                height: 50,
-                resizeMode: 'contain'
-              }
+          }
+        />
+        <Image
+          source={require('../../assets/kedai.png')}
+          style={
+            {
+              marginVertical: 10,
+              width: 80,
+              height: 50,
+              resizeMode: 'contain'
             }
-          />
+          }
+        />
 
 
 
 
-        </View>
       </View>
 
     </ImageBackground>

@@ -202,12 +202,12 @@ export default function EReport({ navigation, route }) {
                                     }}>SKOR</Text>
                                     <View style={{ padding: 10, flex: 1, justifyContent: 'space-around' }}>
 
-                                        <MyList2 label="DASAR-DASAR K3" value={user.nilai1} />
-                                        <MyList2 label="ALAT PELINDUNG DIRI" value={user.nilai2} />
-                                        <MyList2 label="RAMBU-RAMBU K3" value={user.nilai3} />
-                                        <MyList2 label="5R" value={user.nilai4} />
-                                        <MyList2 label="TOTAL NILAI" value={(parseFloat(user.nilai1) + parseFloat(user.nilai2) + parseFloat(user.nilai3) + parseFloat(user.nilai4))} />
-                                        <MyList2 label="NILAI RATA-RATA" value={(parseFloat(user.nilai1) + parseFloat(user.nilai2) + parseFloat(user.nilai3) + parseFloat(user.nilai4)) / 4} />
+                                        <MyList2 label="DASAR-DASAR K3" value={parseFloat(user.nilai1).toFixed(2)} />
+                                        <MyList2 label="ALAT PELINDUNG DIRI" value={parseFloat(user.nilai2).toFixed(2)} />
+                                        <MyList2 label="RAMBU-RAMBU K3" value={parseFloat(user.nilai3).toFixed(2)} />
+                                        <MyList2 label="5R" value={parseFloat(user.nilai4).toFixed(2)} />
+                                        <MyList2 label="TOTAL NILAI" value={(parseFloat(user.nilai1) + parseFloat(user.nilai2) + parseFloat(user.nilai3) + parseFloat(user.nilai4)).toFixed(2)} />
+                                        <MyList2 label="NILAI RATA-RATA" value={((parseFloat(user.nilai1) + parseFloat(user.nilai2) + parseFloat(user.nilai3) + parseFloat(user.nilai4)) / 4).toFixed(2)} />
 
 
 
