@@ -84,7 +84,7 @@ export default function InfoSoal({ navigation, route }) {
 
         axios.post(apiURL + 'nilai_add', kirim).then(res => {
             console.log(res.data);
-            Alert.alert(MYAPP, 'Terima kasih sudah mengerjakan soal !');
+            Alert.alert('Terima kasih sudah mengerjakan soal !', `Nilai kamu adalah : ${nilai}`);
             navigation.goBack()
         });
 

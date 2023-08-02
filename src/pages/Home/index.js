@@ -61,19 +61,21 @@ export default function Home({ navigation, route }) {
           borderColor: colors.secondary,
           // backgroundColor: colors.white,
           margin: 5,
-          height: windowHeight / 6,
+          height: windowHeight / 8,
         }}>
 
           <Image source={{
             uri: item.image
           }} style={{
-            width: 80,
-            height: 80,
+            // flex: 1,
+            width: 40,
+            height: 40,
             resizeMode: 'contain'
           }} />
           <Text style={{
+            marginTop: 10,
             fontFamily: fonts.secondary[600],
-            fontSize: 15,
+            fontSize: 8,
             color: colors.secondary,
             textAlign: 'center'
           }}>{item.judul}</Text>
@@ -115,17 +117,94 @@ export default function Home({ navigation, route }) {
           }} />
         </View>
       </View>
+      <View style={{ flex: 0.5, backgroundColor: colors.primary, padding: 20, }}>
+        <View style={{
+          flex: 1,
+          backgroundColor: colors.primary,
+          borderRadius: 10,
+        }}>
+          {/* <View style={{
+            marginHorizontal: 15,
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            backgroundColor: colors.primary
+          }}>
+            <Image
+              source={require('../../assets/piksi.png')}
+              style={
+                {
+                  marginVertical: 10,
+                  width: 60,
+                  height: 60,
+                  resizeMode: 'contain'
+                }
+              }
+            />
+            <Image
+              source={require('../../assets/asto.png')}
+              style={
+                {
+                  marginVertical: 10,
+                  width: 100,
+                  height: 60,
+                  resizeMode: 'contain'
+                }
+              }
+            />
+
+
+
+
+
+          </View>
+          <View style={{
+            marginHorizontal: 15,
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            backgroundColor: colors.primary
+          }}>
+
+            <Image
+              source={require('../../assets/tutwuri.png')}
+              style={
+                {
+                  marginVertical: 10,
+                  width: 60,
+                  height: 60,
+                  resizeMode: 'contain'
+                }
+              }
+            />
+            <Image
+              source={require('../../assets/kedai.png')}
+              style={
+                {
+                  marginVertical: 10,
+                  width: 100,
+                  height: 50,
+                  resizeMode: 'contain'
+                }
+              }
+            />
+
+
+
+
+          </View> */}
+        </View>
+      </View>
       <View style={{
         flex: 1,
         padding: 10,
         justifyContent: 'center',
+
 
         backgroundColor: colors.primary
       }}>
 
 
 
-        <FlatList data={data} renderItem={__renderItem} numColumns={2} />
+        <FlatList data={data} renderItem={__renderItem} numColumns={4} />
 
 
       </View>

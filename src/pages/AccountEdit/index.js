@@ -129,7 +129,7 @@ export default function AccountEdit({ navigation, route }) {
                 <MyGap jarak={20} />
                 {loading && <ActivityIndicator color={colors.primary} size="large" />}
 
-                {!loading && <MyButton warna={colors.primary} onPress={sendServer} title="Simpan Perubahan" Icons="download-outline" />}
+                {!loading && <MyButton warna={colors.primary} colorText={colors.white} iconColor={colors.white} onPress={sendServer} title="Simpan Perubahan" Icons="download-outline" />}
             </ScrollView>
         </SafeAreaView >
     )

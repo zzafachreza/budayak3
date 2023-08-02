@@ -43,7 +43,15 @@ export default function MenuRambuK3({ navigation, route }) {
                 backgroundColor: colors.primary,
                 flexDirection: 'row', alignItems: 'center'
             }}>
+                <Image style={{
+                    width: 40,
+                    height: 40,
+                    resizeMode: 'contain'
+                }} source={{
+                    uri: item.icon
+                }} />
                 <Text style={{
+                    left: 10,
                     fontFamily: fonts.secondary[600],
                     fontSize: 20,
                     color: colors.white,

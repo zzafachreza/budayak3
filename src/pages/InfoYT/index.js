@@ -1,4 +1,4 @@
-import { Alert, StyleSheet, Text, View, Image, FlatList, ActivityIndicator, Dimensions } from 'react-native'
+import { Alert, StyleSheet, Text, View, Image, FlatList, ActivityIndicator, Dimensions, BackHandler } from 'react-native'
 import React, { useState, useEffect, useRef } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { apiURL, getData, MYAPP, storeData, webURL } from '../../utils/localStorage';
@@ -15,13 +15,39 @@ import 'intl';
 import 'intl/locale-data/jsonp/en';
 import YoutubePlayer from "react-native-youtube-iframe";
 import Pdf from 'react-native-pdf';
+import Orientation from 'react-native-orientation-locker';
 export default function InfoYT({ navigation, route }) {
+    const isFocus = useIsFocused();
+
+
+    useEffect(() => {
+        if (isFocus) {
+            Orientation.lockToLandscapeLeft();
+        }
+
+
+        const backAction = () => {
+            console.log('kembali')
+            Orientation.lockToPortrait();
+        };
+
+        const backHandler = BackHandler.addEventListener(
+            'hardwareBackPress',
+            backAction,
+        );
+
+        return () => backHandler.remove();
+
+    }, [isFocus]);
+
+
     return (
         <View style={{
             flex: 1,
-            backgroundColor: colors.primary
+            backgroundColor: colors.primary,
+
         }}>
-            <View style={{
+            {/* <View style={{
                 backgroundColor: colors.white,
                 height: 60,
                 paddingVertical: 10,
@@ -36,84 +62,20 @@ export default function InfoYT({ navigation, route }) {
                     fontSize: 15,
                     flex: 1,
                 }}>{route.params.nama_materi}</Text>
-            </View>
+            </View> */}
             <YoutubePlayer
-                height={300}
-
+                height={windowWidth}
                 videoId={route.params.link_youtube}
-
+                webViewProps={{
+                    injectedJavaScript: `
+                  var element = document.getElementsByClassName('container')[0];
+                  element.style.position = 'unset';
+                  element.style.paddingBottom = 'unset';
+                  true;
+                `,
+                }}
             />
-            <View style={{
-                flex: 1,
 
-            }}>
-                <View style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-around',
-                    backgroundColor: colors.primary
-                }}>
-                    <Image
-                        source={require('../../assets/piksi.png')}
-                        style={
-                            {
-                                marginVertical: 10,
-                                width: 100,
-                                height: 100,
-                                resizeMode: 'contain'
-                            }
-                        }
-                    />
-                    <Image
-                        source={require('../../assets/asto.png')}
-                        style={
-                            {
-                                marginVertical: 10,
-                                width: 140,
-                                height: 100,
-                                resizeMode: 'contain'
-                            }
-                        }
-                    />
-
-
-
-
-
-                </View>
-                <View style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-around',
-                    backgroundColor: colors.primary
-                }}>
-                    <Image
-                        source={require('../../assets/tutwuri.png')}
-                        style={
-                            {
-                                marginVertical: 10,
-                                width: 100,
-                                height: 100,
-                                resizeMode: 'contain'
-                            }
-                        }
-                    />
-                    <Image
-                        source={require('../../assets/kedai.png')}
-                        style={
-                            {
-                                marginVertical: 10,
-                                width: 140,
-                                height: 100,
-                                resizeMode: 'contain'
-                            }
-                        }
-                    />
-
-
-
-
-
-                </View>
-            </View>
         </View>
     )
 }
