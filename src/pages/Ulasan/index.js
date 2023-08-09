@@ -20,16 +20,26 @@ import { useIsFocused } from '@react-navigation/native';
 import axios from 'axios';
 import LinearGradient from 'react-native-linear-gradient';
 import moment from 'moment';
+import { Rating } from 'react-native-ratings';
 
 export default function Ulasan({ navigation, route }) {
     const [user, setUser] = useState({});
     const [data, setData] = useState([]);
     const isFocused = useIsFocused();
     const [wa, setWA] = useState('');
+
+    const ratingCompleted = (rating) => {
+        console.log("Rating is: " + rating)
+        setKirim({
+            ...kirim,
+            rating: rating
+        })
+    }
     const [open, setOpen] = useState(false);
 
     const [kirim, setKirim] = useState({
         pesan: '',
+        rating: 3,
 
     });
 
@@ -41,7 +51,8 @@ export default function Ulasan({ navigation, route }) {
             Alert.alert(MYAPP, 'Testimoni berhasil di kirim !');
             setKirim({
                 ...kirim,
-                pesan: ''
+                pesan: '',
+                rating: 0,
             })
         })
     }
@@ -98,6 +109,21 @@ export default function Ulasan({ navigation, route }) {
             }
         ])
     };
+
+    const Bintang = ({ nilai }) => {
+
+        var myBintang = [];
+
+        for (let i = 0; i < nilai; i++) {
+            myBintang.push(
+                <Icon type='ionicon' name='star' color={colors.secondary} size={10} />
+            );
+        }
+
+        return <>{myBintang}</>;
+    }
+
+
 
     const MyList = ({ label, value }) => {
         return (
@@ -178,6 +204,10 @@ export default function Ulasan({ navigation, route }) {
                         }}>
 
                             {data.map(i => {
+
+                                console.log(i.rating)
+
+
                                 return (
                                     <View style={{
                                         backgroundColor: colors.white,
@@ -215,11 +245,9 @@ export default function Ulasan({ navigation, route }) {
                                                 flexDirection: 'row',
                                                 marginVertical: 5,
                                             }}>
-                                                <Icon type='ionicon' name='star' color={colors.secondary} size={10} />
-                                                <Icon type='ionicon' name='star' color={colors.secondary} size={10} />
-                                                <Icon type='ionicon' name='star' color={colors.secondary} size={10} />
-                                                <Icon type='ionicon' name='star' color={colors.secondary} size={10} />
-                                                <Icon type='ionicon' name='star' color={colors.secondary} size={10} />
+
+                                                <Bintang nilai={i.rating} />
+
                                             </View>
                                         </View>
                                         {user.id == i.fid_user && <TouchableOpacity onPress={() => {
@@ -243,8 +271,22 @@ export default function Ulasan({ navigation, route }) {
                     </View>
                     <View style={{
                         padding: 20,
+                        borderTopLeftRadius: 20,
+                        borderTopRightRadius: 20,
+                        backgroundColor: colors.white,
                     }}>
-                        <MyInput value={kirim.pesan} onChangeText={x => setKirim({
+                        <Rating
+                            ratingTextColor={colors.primary}
+                            showRating
+                            ratingColor={colors.primary}
+                            ratingBackgroundColor={colors.primary}
+                            ratingCount={5}
+                            startingValue={kirim.rating}
+                            imageSize={40}
+                            onFinishRating={ratingCompleted}
+                            style={{ paddingVertical: 0, marginBottom: 10, }}
+                        />
+                        <MyInput textColor={colors.primary} colorIcon={colors.primary} value={kirim.pesan} onChangeText={x => setKirim({
                             ...kirim,
                             pesan: x
                         })} label="Masukan Testimoni" iconname="create" placeholder="Silahkan masukan testimoni" />

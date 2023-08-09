@@ -12,8 +12,13 @@ import 'intl/locale-data/jsonp/en';
 import moment from 'moment';
 import 'moment/locale/id';
 import MyCarouser from '../../components/MyCarouser';
+import { Rating } from 'react-native-ratings';
 
 export default function Home({ navigation, route }) {
+
+
+
+
 
   const [user, setUser] = useState({});
   const isFocus = useIsFocused();
@@ -117,80 +122,19 @@ export default function Home({ navigation, route }) {
           }} />
         </View>
       </View>
-      <View style={{ flex: 0.5, backgroundColor: colors.primary, padding: 20, }}>
+      <View style={{ flex: 0.7, backgroundColor: colors.primary, padding: 20, }}>
         <View style={{
           flex: 1,
           backgroundColor: colors.primary,
           borderRadius: 10,
+          marginBottom: 10,
         }}>
-          {/* <View style={{
-            marginHorizontal: 15,
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            backgroundColor: colors.primary
-          }}>
-            <Image
-              source={require('../../assets/piksi.png')}
-              style={
-                {
-                  marginVertical: 10,
-                  width: 60,
-                  height: 60,
-                  resizeMode: 'contain'
-                }
-              }
-            />
-            <Image
-              source={require('../../assets/asto.png')}
-              style={
-                {
-                  marginVertical: 10,
-                  width: 100,
-                  height: 60,
-                  resizeMode: 'contain'
-                }
-              }
-            />
-
-
-
-
-
-          </View>
-          <View style={{
-            marginHorizontal: 15,
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            backgroundColor: colors.primary
-          }}>
-
-            <Image
-              source={require('../../assets/tutwuri.png')}
-              style={
-                {
-                  marginVertical: 10,
-                  width: 60,
-                  height: 60,
-                  resizeMode: 'contain'
-                }
-              }
-            />
-            <Image
-              source={require('../../assets/kedai.png')}
-              style={
-                {
-                  marginVertical: 10,
-                  width: 100,
-                  height: 50,
-                  resizeMode: 'contain'
-                }
-              }
-            />
-
-
-
-
-          </View> */}
+          <Image source={require('../../assets/banner.png')} style={{
+            width: '100%',
+            height: 200,
+            resizeMode: 'contain',
+            borderRadius: 10,
+          }} />
         </View>
       </View>
       <View style={{
