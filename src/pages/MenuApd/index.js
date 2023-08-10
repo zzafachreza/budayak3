@@ -29,7 +29,13 @@ export default function MenuApd({ navigation, route }) {
 
     const __renderItem = ({ item }) => {
         return (
-            <TouchableNativeFeedback onPress={() => navigation.navigate('InfoPdf', item)}>
+            <TouchableNativeFeedback onPress={() => {
+                if (item.tipe == 'VIDEO') {
+                    navigation.navigate('InfoYT', item)
+                } else {
+                    navigation.navigate('InfoPdf', item)
+                }
+            }}>
                 <View style={{
                     flex: 1,
                     padding: 10,

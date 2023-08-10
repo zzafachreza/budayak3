@@ -25,16 +25,11 @@ import { Rating } from 'react-native-ratings';
 export default function Ulasan({ navigation, route }) {
     const [user, setUser] = useState({});
     const [data, setData] = useState([]);
+    const [rating, setRating] = useState(3)
     const isFocused = useIsFocused();
     const [wa, setWA] = useState('');
 
-    const ratingCompleted = (rating) => {
-        console.log("Rating is: " + rating)
-        setKirim({
-            ...kirim,
-            rating: rating
-        })
-    }
+
     const [open, setOpen] = useState(false);
 
     const [kirim, setKirim] = useState({
@@ -44,8 +39,15 @@ export default function Ulasan({ navigation, route }) {
     });
 
     const sendServer = () => {
-        console.log(kirim);
-        axios.post(apiURL + 'testimoni_add', kirim).then(res => {
+
+
+
+
+
+        axios.post(apiURL + 'testimoni_add', {
+            ...kirim,
+            rating: rating
+        }).then(res => {
             console.log(res.data);
             __getTransaction();
             Alert.alert(MYAPP, 'Testimoni berhasil di kirim !');
@@ -90,25 +92,7 @@ export default function Ulasan({ navigation, route }) {
 
 
 
-    const btnKeluar = () => {
-        Alert.alert(MYAPP, 'Apakah kamu yakin akan keluar ?', [
-            {
-                text: 'Batal',
-                style: "cancel"
-            },
-            {
-                text: 'Keluar',
-                onPress: () => {
-                    storeData('user', null);
 
-                    navigation.reset({
-                        index: 0,
-                        routes: [{ name: 'Splash' }],
-                    });
-                }
-            }
-        ])
-    };
 
     const Bintang = ({ nilai }) => {
 
@@ -125,34 +109,7 @@ export default function Ulasan({ navigation, route }) {
 
 
 
-    const MyList = ({ label, value }) => {
-        return (
-            <View
-                style={{
-                    borderBottomWidth: 1,
-                    borderBottomColor: colors.border,
-                    marginVertical: 3,
-                    padding: 5,
-                    backgroundColor: colors.white,
-                    borderRadius: 5,
-                }}>
-                <Text
-                    style={{
-                        fontFamily: fonts.primary[400],
-                        color: '#8E99A2',
-                    }}>
-                    {label}
-                </Text>
-                <Text
-                    style={{
-                        fontFamily: fonts.primary[400],
-                        color: colors.black,
-                    }}>
-                    {value}
-                </Text>
-            </View>
-        )
-    }
+
     return (
         <SafeAreaView style={{
             flex: 1,
@@ -281,9 +238,12 @@ export default function Ulasan({ navigation, route }) {
                             ratingColor={colors.primary}
                             ratingBackgroundColor={colors.primary}
                             ratingCount={5}
-                            startingValue={kirim.rating}
+                            startingValue={rating}
                             imageSize={40}
-                            onFinishRating={ratingCompleted}
+                            onFinishRating={x => {
+                                console.log('rating', x);
+                                setRating(x)
+                            }}
                             style={{ paddingVertical: 0, marginBottom: 10, }}
                         />
                         <MyInput textColor={colors.primary} colorIcon={colors.primary} value={kirim.pesan} onChangeText={x => setKirim({

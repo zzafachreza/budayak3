@@ -29,36 +29,42 @@ export default function MenuRambuK3({ navigation, route }) {
 
     const __renderItem = ({ item }) => {
         return (
-            <TouchableOpacity onPress={() => {
+            <TouchableNativeFeedback onPress={() => {
                 if (item.tipe == 'VIDEO') {
                     navigation.navigate('InfoYT', item)
                 } else {
                     navigation.navigate('InfoPdf', item)
                 }
-            }} style={{
-                padding: 10,
-                borderRadius: 10,
-                margin: 10,
-                height: 80,
-                backgroundColor: colors.primary,
-                flexDirection: 'row', alignItems: 'center'
             }}>
-                <Image style={{
-                    width: 40,
-                    height: 40,
-                    resizeMode: 'contain'
-                }} source={{
-                    uri: item.icon
-                }} />
-                <Text style={{
-                    left: 10,
-                    fontFamily: fonts.secondary[600],
-                    fontSize: 20,
-                    color: colors.white,
-                    flex: 1,
-                }}>{item.nama_materi}</Text>
-                <Icon type='ionicon' name='chevron-forward' size={20} color={colors.white} />
-            </TouchableOpacity>
+                <View style={{
+                    // flex: 1,
+                    width: windowWidth / 3.5,
+                    padding: 10,
+                    borderRadius: 10,
+                    margin: 5,
+                    height: 120,
+                    backgroundColor: colors.primary,
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}>
+                    <Image style={{
+                        width: 50,
+                        height: 50,
+                        resizeMode: 'contain'
+                    }} source={{
+                        uri: item.icon
+                    }} />
+                    <Text style={{
+                        marginTop: 10,
+                        fontFamily: fonts.secondary[600],
+                        fontSize: 11,
+                        textAlign: 'center',
+                        color: colors.white,
+                    }}>{item.nama_materi}</Text>
+
+
+                </View>
+            </TouchableNativeFeedback>
         )
     }
 
@@ -83,7 +89,7 @@ export default function MenuRambuK3({ navigation, route }) {
                 flex: 1,
                 padding: 10,
             }}>
-                <FlatList showsVerticalScrollIndicator={false} data={data} renderItem={__renderItem} />
+                <FlatList numColumns={3} showsVerticalScrollIndicator={false} data={data} renderItem={__renderItem} />
             </View>
         </SafeAreaView>
     )
