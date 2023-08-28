@@ -101,7 +101,7 @@ export default function EReport({ navigation, route }) {
                 <Text
                     style={{
                         fontFamily: fonts.primary[400],
-                        color: colors.black,
+                        color: colors.white,
                         fontSize: 12,
                         flex: 1,
                     }}>
@@ -179,6 +179,17 @@ export default function EReport({ navigation, route }) {
                                     }}>IDENTITAS PESERTA</Text>
                                     <View style={{ padding: 10, }}>
 
+                                        <Image source={
+                                            {
+                                                uri: user.foto_user
+                                            }
+                                        } style={{
+                                            width: 80,
+                                            height: 80,
+                                            alignSelf: 'center',
+                                            borderRadius: 40,
+                                            marginBottom: 10,
+                                        }} />
                                         <MyList label="Nama Lengkap" value={user.nama_lengkap} />
                                         <MyList label="NIK/NIS/NIM/NIDN" value={user.nik} />
 
@@ -214,6 +225,48 @@ export default function EReport({ navigation, route }) {
                                     </View>
 
 
+                                </View>
+
+
+                            </View>
+                            <View style={{
+                                padding: 5,
+                                marginHorizontal: 10,
+                                borderWidth: 1,
+                                flexDirection: 'row'
+
+                            }}>
+                                <View style={{
+                                    flex: 1,
+                                    justifyContent: 'center',
+                                    alignItems: 'center'
+                                }}>
+                                    <Text style={{
+                                        textAlign: 'center',
+                                        fontSize: 12,
+                                        fontFamily: fonts.secondary[600]
+                                    }}>Instruktur</Text>
+                                    <Text style={{
+                                        marginTop: 40,
+                                        fontSize: 12,
+                                        fontFamily: fonts.secondary[600]
+                                    }}>(____________)</Text>
+                                </View>
+                                <View style={{
+                                    flex: 1,
+                                    justifyContent: 'center',
+                                    alignItems: 'center'
+                                }}>
+                                    <Text style={{
+                                        textAlign: 'center',
+                                        fontSize: 12,
+                                        fontFamily: fonts.secondary[600]
+                                    }}>Peserta</Text>
+                                    <Text style={{
+                                        marginTop: 40,
+                                        fontSize: 12,
+                                        fontFamily: fonts.secondary[600]
+                                    }}>({user.nama_lengkap})</Text>
                                 </View>
                             </View>
                         </ViewShot>

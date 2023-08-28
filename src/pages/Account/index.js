@@ -34,7 +34,7 @@ export default function ({ navigation, route }) {
 
         if (isFocused) {
             getData('user').then(res => {
-
+                console.log(res)
                 setOpen(true);
                 setUser(res);
 
@@ -154,7 +154,10 @@ export default function ({ navigation, route }) {
                             flexDirection: 'row',
                             alignItems: 'center',
                         }}>
-                            <View>
+                            <View style={{
+                                width: 100,
+                                height: 100,
+                            }}>
                                 <Image source={{
                                     uri: user.foto_user
                                 }} style={{
