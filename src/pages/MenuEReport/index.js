@@ -163,6 +163,30 @@ export default function EReport({ navigation, route }) {
 
                         </View>
                         <ViewShot ref={ref} options={{ fileName: "Ereport", format: "jpg", quality: 0.9 }}>
+
+                            <View style={{
+                                marginHorizontal: 10,
+                                flexDirection: 'row',
+                                alignItems: 'center',
+                                padding: 10,
+                                backgroundColor: colors.primary,
+                            }}>
+                                <View>
+                                    <Image source={require('../../assets/piksi.png')} style={{
+                                        width: 50,
+                                        height: 50,
+                                    }} />
+                                </View>
+                                <Text style={{
+                                    flex: 1,
+                                    marginLeft: 10,
+                                    fontSize: 18,
+                                    textAlign: 'center',
+                                    color: colors.white,
+                                    fontFamily: fonts.secondary[600]
+                                }}>E-Report Hasil Pembelajaran Budaya K3</Text>
+                            </View>
+
                             <View style={{
                                 backgroundColor: colors.white,
                                 margin: 10,
@@ -171,12 +195,7 @@ export default function EReport({ navigation, route }) {
                                 <View style={{
                                     flex: 1
                                 }}>
-                                    <Text style={{
-                                        padding: 10,
-                                        backgroundColor: colors.primary,
-                                        color: colors.white,
-                                        fontFamily: fonts.secondary[800]
-                                    }}>IDENTITAS PESERTA</Text>
+
                                     <View style={{ padding: 10, }}>
 
                                         <Image source={
@@ -196,7 +215,7 @@ export default function EReport({ navigation, route }) {
                                         <MyList label="Tempat, Tanggal/Lahir" value={user.tempat_lahir + ', ' + moment(user.tanggal_lahir).format('DD MMMM YYYY')} />
                                         <MyList label="Status/Jabata" value={user.jabatan} />
                                         <MyList label="Instansi/Perusahaan" value={user.instansi} />
-                                        <MyList label="Nomor Whatsapp" value={user.telepon} />
+
 
 
                                     </View>
@@ -205,12 +224,7 @@ export default function EReport({ navigation, route }) {
                                 <View style={{
                                     flex: 1,
                                 }}>
-                                    <Text style={{
-                                        padding: 10,
-                                        backgroundColor: colors.primary,
-                                        color: colors.white,
-                                        fontFamily: fonts.secondary[800]
-                                    }}>SKOR</Text>
+
                                     <View style={{ padding: 10, flex: 1, justifyContent: 'space-around' }}>
 
                                         <MyList2 label="DASAR-DASAR K3" value={parseFloat(user.nilai1).toFixed(2)} />
@@ -233,7 +247,8 @@ export default function EReport({ navigation, route }) {
                                 padding: 5,
                                 marginHorizontal: 10,
                                 borderWidth: 1,
-                                flexDirection: 'row'
+                                flexDirection: 'row',
+                                backgroundColor: colors.white
 
                             }}>
                                 <View style={{
