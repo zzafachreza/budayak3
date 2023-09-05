@@ -52,7 +52,7 @@ export default function AccountEdit({ navigation, route }) {
     return (
         <SafeAreaView style={{
             flex: 1,
-            backgroundColor: colors.white,
+            backgroundColor: colors.primary,
             padding: 10,
         }}>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -129,7 +129,7 @@ export default function AccountEdit({ navigation, route }) {
                 <MyGap jarak={20} />
                 {loading && <ActivityIndicator color={colors.primary} size="large" />}
 
-                {!loading && <MyButton warna={colors.primary} colorText={colors.white} iconColor={colors.white} onPress={sendServer} title="Simpan Perubahan" Icons="download-outline" />}
+                {!loading && <MyButton warna={colors.secondary} colorText={colors.primary} iconColor={colors.primary} onPress={sendServer} title="Simpan Perubahan" Icons="download-outline" />}
             </ScrollView>
         </SafeAreaView >
     )

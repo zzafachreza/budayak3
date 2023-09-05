@@ -235,7 +235,7 @@ export default function Login({ navigation }) {
             fontFamily: fonts.secondary[600],
             color: colors.white,
             fontSize: 15,
-          }}>Aplikasi ini merupakan program kerjasama antara Politeknik Piksi Ganesha Indonsia dan CV. Astoetik dalam program <Text style={{
+          }}>Aplikasi ini merupakan program kerjasama antara Politeknik Piksi Ganesha Indonesia dan CV. Astoetik dalam program <Text style={{
             fontFamily: fonts.secondary[800],
             color: colors.secondary,
             fontStyle: 'italic'
@@ -247,7 +247,7 @@ export default function Login({ navigation }) {
           justifyContent: 'center',
           alignItems: 'center'
         }}>
-          <ActivityIndicator color={colors.primary} size="large" />
+          <ActivityIndicator color={colors.secondary} size="large" />
         </View>}
       </ScrollView>
 
